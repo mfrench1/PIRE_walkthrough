@@ -1,6 +1,6 @@
 # PIRE_walkthrough
 
-Downloading Files
+[Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files) 
 
 Demultiplexing Files
 
