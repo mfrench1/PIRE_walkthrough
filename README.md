@@ -4,7 +4,7 @@
 
 [Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files)
 
-Trimming Adapter & Low Quality Reads
+[Trimming Adapter & Low Quality Reads]9https://github.com/mfrench1/PIRE_walkthrough/blob/master/Trimming%20Adapter%20%26%20Low%20Quality%20Reads)
 
 Making Reference Genome
 
