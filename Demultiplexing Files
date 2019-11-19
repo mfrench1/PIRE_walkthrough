@@ -54,3 +54,80 @@ newRAD_demultiplex.sbatch is for single-digest RAD data that has 1 ligated barco
   ```
   sbatch newRAD_demultiplex.sbatch
   ```
+
+### Most Common Motifs in 1st 10bp of newRAD
+`GGCGATGCTC`   : expected res site - barcode
+`GGAAGCCGGT`  : expected res site - barcode
+` GCGATGCTC`      : res site - barcode with 1 del
+` GAAGCCGGT`     : res site - barcode with 1 del
+`  CGATGCTC`         : res site - barcode with 2 del = barcode
+`  AAGCCGGT`        : res site - barcode with 2 del = barcode
+`GATCGGAAGA `  : i7 or rev-comp i5
+`AAGCAGAAGA`   : rev-comp i7
+` ATCGGAAGAG`   : i7 or rev-comp i5 with 1 del
+`GGACGTAC..`       : biotin side of ligation 1 adapter
+
+1-2 mismatches are common across these motifs
+
+For the first few species, the `BARCODE` is either `CGATGCTC` or `AAGCCGGT`
+
+### Hackish Solution to Recover Good Barcodes and Those with a Leading Deletion
+
+Here are the details on how to hack together most of the reads with legitimate barcodes presuming that, like the _Siganus spinus_ I've looked at, the majority of discarded legitimate barcodes have a single leading deletion.  It would be pretty easy to update this methodology to include barcodes with 2 leading deletions, but it's probably not necessary. It does not, however address that 2 mismatches are fairly common and a new script using `agrep` or `tre-grep` will give us more control there.  Until then, this is what we have.
+
+I'm assuming that you have a _Species Dir_ for this data and have downloaded the `*fq.gz` and `*_demultiplex.txt` files
+
+*Prep _Species Dir_*
+* if your barcodes  in `*_demultiplex.txt` don't begin with `GG` , then add `GG`
+    e.g., `ls *_demultiplex | parallel --no-notice -j10 -q sed -i 's/^/GG/' {} `
+* make a directory called `dmplxGG` in your _Species Dir_ and *copy* your `*_demultiplex.txt` files there
+  ```
+  mkdir dmplxGG
+  cp *_demultiplex.txt
+  ```
+* change `GG` to `G` in `YourSpeciesDir/*_demultiplex.txt`
+    ```
+    ls *_demultiplex | parallel --no-notice -j10 -q sed -i 's/^GG/G/' {} 
+    ```
+* make a directory called `dmplxG` in your _Species Dir_ and *move*  your `*_demultiplex.txt` files there
+  ```
+  mkdir dmplxG
+  mv  *_demultiplex.txt
+  ```
+* make a directory called `fastq` in your _Species Dir_ and move your `*fq.gz` files there
+  ```
+  mkdir fastq
+  mv *fq.gz fastq
+  ```
+
+*_Demultiplexing_*
+* Demultiplex in `dmplxGG` dir using [newRAD_demultiplex.sbatch](https://github.com/cbirdlab/RAD_demultiplex)
+  ```
+  git clone https://github.com/cbirdlab/RAD_demultiplex.git
+  cp RAD_demultiplex/newRAD_demultiplex.sbatch dmplxGG
+  cd dmplxGG
+  nano dmplxGG #modify to work with your system and dirs
+  sbatch newRAD_demultiplex.sbatch
+  ```
+* demultiplex in `dmplxG` dir using [newRAD_demultiplex.sbatch](https://github.com/cbirdlab/RAD_demultiplex)
+  ```
+  cd ../dmplxG
+  cp dmplxGG/newRAD_demultiplex.sbatch .
+  sbatch newRAD_demultiplex.sbatch
+  ```
+
+*_Combine Demultiplexed Files_*
+* Move to _Species Dir_ and Concatenate the `fq.gz` files from `dmplxG` and `dmplxGG`
+  ```
+  cd ..
+
+  # you have to modify these next 2 lines to match your species file names
+  ls dmplxG/demultiplexed_seqs_20190905_PIRE_Ssp-*/*L4.[12].fq.gz > dmplxG.txt
+  ls dmplxGG/demultiplexed_seqs_20190905_PIRE_Ssp-*/*L4.[12].fq.gz > dmplxGG.txt
+  cat dmplxGG.txt | parallel -k --no-notice "basename " | sed 's/1\.fq/F\.fq/' | sed 's/2\.fq/R\.fq/' > fqnames.txt
+
+  # use parallel and zcat to finish creating the fq.gz files
+  parallel --no-notice --link " zcat {1} {2} | gzip > {3} " :::: dmplxGG.txt :::: dmplxG.txt :::: fqnames.txt
+  ```
+  
+  
