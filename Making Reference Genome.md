@@ -61,9 +61,19 @@ grep -vB1 -f  microsat.motifs reference.15.15.fasta > reference.noSTR.15.15.fast
 ```
   * If we think this is a good idea, perhaps somebody can track down a more complete list of motifs to remove and I can figure out how to make `agrep` do this. 
   
-  I'm running into an issue with running out of ram (I have 256 gb) when allowing rainbow merge to run in parallel (the default of dDocent). The nature of this single digest data defeats many of the tricks that Puritz used ( and I took even farther) to make this reference assembly work so efficiently. I am using 95GB of ram with 1 process right now, so I'm trying some different things to make this work and finish more quickly.
+I'm running into an issue with running out of ram (I have 256 gb) when allowing rainbow merge to run in parallel (the default of dDocent).  The nature of this single digest data defeats many of the tricks that Puritz used ( and I took even farther) to make this reference assembly work so efficiently.  I am using 95GB of ram with 1 process right now, so I'm trying some different things to make this work and finish more quickly.
 
-I am reducing the the -N setting based upon a histogram I made from the rbdiv*out file because I was crashing the node with 40 threads and -N 10000 -R 10000. Here's how to make the histogram for your species (note that you may have different numbers or no numbers in the file name below):
-
+I am reducing the the -N setting based upon a histogram I made from the rbdiv*out file because I was crashing the node with 40 threads and `-N 10000` `-R 10000`. Here's how to make the histogram for your species (note that you may have different numbers or no numbers in the file name below):
+```bash
 cut -f5 rbdiv.16.16.out | uniq -c | tr -s " " "\t" | sed 's/^\t//g' > rbdiv.16.16.seqsPERprecluster.tsv
-  
+```
+then i visualized the histogram in R:
+```R
+df <- read.table("rbdiv.16.16.seqsPERprecluster.tsv")
+hist(df$V1, breaks = 1000, xlim = c(0,20000))
+```
+Then I used this histogram to determine that `rainbow merge -N 5000 -R2500` were good settings to get the majority of loci in the ref without including the fraction of loci with large numbers of reads.  I believe that if a precluster (read rainbow man and pub) has more than `-N` reads that it will be eliminated from the ref genome.  
+
+I am also trying a different strategy for dividing up the rbdiv*out file.  I've split the rbdiv*out into 1 file for every precluster in hopes that this might reduce the ram usage of rainbow merge.  That's about 13,000 files.  I'm withholding the code because I'm not sure if it's going to provide an advantage yet.
+
+I'm running rainbow merge on each of the 13,000 files on 10 threads and seeing if I can avoid crashing the node.  
