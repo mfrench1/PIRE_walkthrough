@@ -1,6 +1,6 @@
 # PIRE_walkthrough
 
-[Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files) 
+[Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files.md) 
 
 [Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files)
 
