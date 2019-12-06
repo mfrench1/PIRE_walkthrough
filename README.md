@@ -2,7 +2,7 @@
 
 [Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files.md) 
 
-[Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files)
+[Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files.md)
 
 [Trimming Adapter & Low Quality Reads](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Trimming%20Adapter%20%26%20Low%20Quality%20Reads)
 
