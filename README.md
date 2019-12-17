@@ -6,7 +6,7 @@
 
 [Trimming Adapter & Low Quality Reads](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Trimming%20Adapter%20%26%20Low%20Quality%20Reads.md)
 
-Making Reference Genome
+[Making Reference Genome]
 
 Mapping Reads to Reference Genome
 
