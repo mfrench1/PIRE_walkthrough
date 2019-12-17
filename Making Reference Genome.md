@@ -77,3 +77,7 @@ Then I used this histogram to determine that `rainbow merge -N 5000 -R2500` were
 I am also trying a different strategy for dividing up the rbdiv*out file.  I've split the rbdiv*out into 1 file for every precluster in hopes that this might reduce the ram usage of rainbow merge.  That's about 13,000 files.  I'm withholding the code because I'm not sure if it's going to provide an advantage yet.
 
 I'm running rainbow merge on each of the 13,000 files on 10 threads and seeing if I can avoid crashing the node.  
+
+dDocentHPC mkREF is working properly and the repo has been updated. I believe that I've solved all of the issues I was having with RAM and node crashing.
+
+I noticed a bug in dDocentHPC mkREF this morning and fixed it. I also changed the config.4.all file by adding two settings for assembly. Things won't run correctly if you run the updated version of one without the updated version of the other. Both changes have been pushed to git hub and I modified the instructions above.
