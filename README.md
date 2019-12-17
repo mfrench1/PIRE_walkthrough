@@ -1,14 +1,14 @@
 # PIRE_walkthrough
 
-[Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files.md) 
+[1. Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files.md) 
 
-[Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files.md)
+[2. Demultiplexing Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Demultiplexing%20Files.md)
 
-[Trimming Adapter & Low Quality Reads](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Trimming%20Adapter%20%26%20Low%20Quality%20Reads.md)
+[3. Trimming Adapter & Low Quality Reads](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Trimming%20Adapter%20%26%20Low%20Quality%20Reads.md)
 
-[Making Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Making%20Reference%20Genome.md)
+[4. Making Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Making%20Reference%20Genome.md)
 
-[Mapping Reads to Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Mapping%20Reads%20to%20Reference%20Genome.md)
+[5. Mapping Reads to Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Mapping%20Reads%20to%20Reference%20Genome.md)
 
 Filter BAM Files
 
