@@ -10,7 +10,7 @@
 
 [5. Mapping Reads to Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Mapping%20Reads%20to%20Reference%20Genome.md)
 
-Filter BAM Files
+[6. Filter BAM Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Filter%20BAM%20Files.md)
 
 Genotyping BAM Files to make VCF
 
