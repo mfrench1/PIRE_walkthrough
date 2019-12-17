@@ -8,7 +8,7 @@
 
 [Making Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Making%20Reference%20Genome.md)
 
-Mapping Reads to Reference Genome
+[Mapping Reads to Reference Genome](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Mapping%20Reads%20to%20Reference%20Genome.md)
 
 Filter BAM Files
 
