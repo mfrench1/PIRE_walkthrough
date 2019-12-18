@@ -16,7 +16,7 @@
 
 [8. Filtering VCF File to Identify Contigs for Probe Development](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Filtering%20VCF%20File%20to%20Identify%20Contigs%20for%20Probe%20Development.md)
 
-Filtering Reference Genome for Probe Development
+[9. Filtering Reference Genome for Probe Development](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Filtering%20Reference%20Genome%20for%20Probe%20Development.md)
 
 Indel Filter
 
