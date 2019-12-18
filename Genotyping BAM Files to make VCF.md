@@ -1,13 +1,17 @@
 I'm assuming that you're starting in your mkBAM dir
 
-Create a mkVCF directory and move the non-"Pool" *RG.bam files (fq.gz and bam) to it
+1. Create a mkVCF directory and move the non-"Pool" `*RG.bam` files (fq.gz and bam) to it
+```bash
 mkdir ../mkVCF
 ls *RG.bam | grep -v '_Pool-' | parallel --no-notice "mv {} ../mkVCF"
 cd ../mkVCF
-Pull down the latest version of dDocentHPC. I made several changes on 09-29-2019, and it will be important to get both the newest config.4.all and the dDocentHPC.bash files.
+```
 
-Edit config file. I made it so that all positions will be typed and it will mostly only look at read1 when genotyping. That's not always the case right now, but it is mostly the case. I'll see if I can improve the script as necessary or we can cull positions from the *.vcf. I have made it so that SNPs, insertions, and deletions are called while MNPs (multinucleotide polymorphisms) are called as SNPs.
+2. Pull down the latest version of dDocentHPC.  I made several changes on 09-29-2019, and it will be important to get both the newest config.4.all and the dDocentHPC.bash files.
 
+3. Edit config file.  I made it so that all positions will be typed and it will mostly only look at read1 when genotyping.  That's not always the case right now, but it is mostly the case.  I'll see if I can improve the script as necessary or we can cull positions from the *.vcf.  I have made it so that SNPs, insertions, and deletions are called while MNPs (multinucleotide polymorphisms) are called as SNPs.
+
+```bash
 ----------mkVCF: Settings for variant calling/ genotyping---------------------------------------------------------
 no              freebayes -J --pooled-discrete (yes or no)                                              If yes, a pool of individuals is assumed to be the statistical unit of observation.
 no              freebayes -A --cnv-map (filename.bed or no)                                             If the pools have different numbers of individuals, then you should provide a copy number variation (cnv) *.bed file with $
@@ -35,11 +39,11 @@ no              freebayes -a --allele-balance-priors-off (no|yes)               
 no              freebayes --no-partial-observations (no|yes)                                    Exclude observations which do not fully span the dynamically-determined detection window.  (default, use all observations, dividin$
 yes             freebayes    --report-monomorphic (no|yes)                                              Report even loci which appear to be monomorphic, and report allconsidered alleles, even those which are not in called geno$
 ------------------------------------------------------------------------------------------------------------------
-Update the dDocentHPC.sbatch file with the dDocentHPC.bash mkVCF command
 
-run
+```
 
+4. Update the `dDocentHPC.sbatch` file with the `dDocentHPC.bash mkVCF` command
 
-The unusual situation where we are interested in both variable and non-variable sites required some rethinking of the genotyping settings. I'm trying the settings above, which I just changed
+5. run
 
-We probably want to stringently filter loci like normal, and then filter monomorphic sites separately. Then we could select a given number of loci from each category.
+the unusual situation where we are interested in both variable and non-variable sites required some rethinking of the genotyping settings.  I'm trying the settings above, which I just changed
