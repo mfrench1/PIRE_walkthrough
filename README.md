@@ -14,7 +14,7 @@
 
 [7. Genotyping BAM Files to make VCF](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Genotyping%20BAM%20Files%20to%20make%20VCF.md)
 
-Filtering VCF File to Identify Contigs for Probe Development
+[8. Filtering VCF File to Identify Contigs for Probe Development](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Filtering%20VCF%20File%20to%20Identify%20Contigs%20for%20Probe%20Development.md)
 
 Filtering Reference Genome for Probe Development
 
