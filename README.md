@@ -21,3 +21,7 @@
 [10. Filtering Reference Genome for Probe Development](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Filtering%20Reference%20Genome%20for%20Probe%20Development.md)
 
 [11. Indel Filter](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Indel%20Filter.md)
+
+# Filtering Probes - Genotyping
+
+[12. Downloading probe files]
