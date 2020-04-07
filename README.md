@@ -25,3 +25,8 @@
 # Filtering Probes - Genotyping
 
 [12. Downloading probe files]
+[13. Demlx]
+[14. trimming] 
+[15. Assessing Barcode Restriction-Site Motif]
+[16. Mapping]
+
