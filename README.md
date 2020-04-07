@@ -1,5 +1,4 @@
-# PIRE_walkthrough
-# Bioinformatics for Probe Development
+# PIRE Bioinformatics for Probe Development
 
 [1. Downloading Files](https://github.com/mfrench1/PIRE_walkthrough/blob/master/Downloading%20Files.md) 
 
