@@ -6,6 +6,7 @@ mkdir ../mkVCF
 ls *RG.bam | grep -v '_Pool-' | parallel --no-notice "mv {} ../mkVCF"
 cd ../mkVCF
 ```
+1.2. Copy reference genome to mkVCF
 
 2. Pull down the latest version of dDocentHPC.  I made several changes on 09-29-2019, and it will be important to get both the newest config.4.all and the dDocentHPC.bash files.
 
@@ -45,5 +46,3 @@ yes             freebayes    --report-monomorphic (no|yes)                      
 4. Update the `dDocentHPC.sbatch` file with the `dDocentHPC.bash mkVCF` command
 
 5. run
-
-the unusual situation where we are interested in both variable and non-variable sites required some rethinking of the genotyping settings.  I'm trying the settings above, which I just changed
